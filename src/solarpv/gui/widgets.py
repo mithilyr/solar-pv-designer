@@ -33,7 +33,19 @@ class GridView(QGraphicsView):
         self.string_map = string_map or {}
         self.editable = editable
         self.redraw()
-        self.fitInView(self.scene().itemsBoundingRect(), Qt.KeepAspectRatio)
+        self.fit()
+
+    def fit(self) -> None:
+        if self.grid:
+            self.fitInView(self.scene().itemsBoundingRect(), Qt.KeepAspectRatio)
+
+    def showEvent(self, event) -> None:  # the view has its real size only once shown
+        super().showEvent(event)
+        self.fit()
+
+    def resizeEvent(self, event) -> None:
+        super().resizeEvent(event)
+        self.fit()
 
     def redraw(self) -> None:
         scene = self.scene()

@@ -48,3 +48,21 @@ def test_library_integrity(library):
     for inv in library.inverters:
         assert not inv.validate(), (inv.key, inv.validate())
     assert len({i.key for i in library.inverters}) == len(library.inverters)
+
+
+def test_unconnected_panels_are_a_check_warning(library, rules):
+    project = Project(name="House", panel_key="JA Solar JAM72D40-595/LB",
+                      inverters=[InverterChoice("SolaX X1-BOOST-5K-G4", 1)],
+                      roofs=[Roof("Roof", [[1] * 7, [1] * 7])])
+    result = compute(project, library, rules)
+    warn = [c for c in result.checks if c.title == "Unconnected panels"]
+    assert warn and warn[0].status == "warn" and warn[0].detail.startswith("3 of 14")
+
+
+def test_excel_bom_leaves_out_zero_lines(tmp_path, library, rules):
+    project = make_project()
+    result = compute(project, library, rules)
+    assert any(line.qty == 0 for line in result.bom.lines)
+    export_report(project, result, tmp_path / "r.xlsx")
+    ws = load_workbook(tmp_path / "r.xlsx")["BOM"]
+    assert all(row[4] != 0 for row in ws.iter_rows(min_row=5, values_only=True) if row[1])

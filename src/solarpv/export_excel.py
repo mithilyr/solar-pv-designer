@@ -80,6 +80,8 @@ def _bom_sheet(ws, project: Project, result: ProjectResult) -> None:
     row += 1
     category, n = None, 0
     for line in result.bom.lines:
+        if line.qty == 0:
+            continue  # e.g. cable sizes this site does not use; the app still lists them
         if line.category != category:
             category, n = line.category, 0
             ws.merge_cells(start_row=row, start_column=1, end_row=row, end_column=6)

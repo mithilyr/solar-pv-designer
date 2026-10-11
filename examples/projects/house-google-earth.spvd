@@ -1,0 +1,61 @@
+{
+ "name": "Example: House (Google Earth dims)",
+ "client": "",
+ "location": "",
+ "designer": "",
+ "site_preset": "",
+ "site": {
+  "min_ambient_c": 18,
+  "max_ambient_c": 36,
+  "cell_rise_c": 30.0
+ },
+ "thunder_days": 100.0,
+ "panel_key": "JA Solar JAM72D40-595/LB",
+ "inverters": [
+  {
+   "key": "SolaX X1-BOOST-5K-G4",
+   "qty": 1
+  }
+ ],
+ "string_sizes": [],
+ "follow_runs": true,
+ "options": {
+  "min_overload_pct": 18.5,
+  "max_overload_pct": 31.5,
+  "allow_mixed_sizes_per_inverter": true,
+  "max_panels_left_out": 10
+ },
+ "cable_margin_pct": 30.0,
+ "vertical_drop_m": 10.0,
+ "max_dc_drop_pct": 3.0,
+ "roofs": [
+  {
+   "name": "South face",
+   "grid": [
+    [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ]
+   ],
+   "roof_type": "clay_tile",
+   "dc_route_m": null,
+   "source": ""
+  }
+ ],
+ "manual_quantities": {},
+ "app_version": "0.1.0"
+}

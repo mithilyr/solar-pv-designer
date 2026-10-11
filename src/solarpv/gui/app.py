@@ -197,7 +197,10 @@ class MainWindow(QMainWindow):
         fails = sum(1 for c in r.checks if c.status == "fail")
         warns = sum(1 for c in r.checks if c.status == "warn")
         if r.design:
-            self.status.setText(f"{r.design.panels_used} panels, {r.design.dc_kwp:.2f} kWp, "
+            d = r.design
+            panels = f"{d.panels_used} panels" if d.panels_used == d.panels_available else \
+                f"{d.panels_used} of {d.panels_available} panels connected"
+            self.status.setText(f"{panels}, {r.design.dc_kwp:.2f} kWp, "
                                 f"{len(r.design.inverters)} inverters, {r.design.total_strings} strings. "
                                 f"Checks: {fails} failed, {warns} warnings.")
         else:

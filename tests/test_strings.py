@@ -56,3 +56,19 @@ def test_guideline_helpers(panel):
     size, drop = size_dc_cable(150, panel, 12, SiteConditions())
     assert size >= 6 and drop <= 3
     assert 30 < lcrit_m(100) < 40
+
+
+def test_mixed_inverters_share_an_overload_evenly(library, panel):
+    # 841 panels (500 kWp) on 435 kW cannot reach the window; load every inverter evenly instead.
+    invs = [library.inverter("SolaX X3-FTH-125K")] * 3 + [library.inverter("SolaX X3-MGA-60K-G2")]
+    d = design_strings(panel, invs, 841, SiteConditions())
+    ols = [a.overload_pct(panel) for a in d.inverters]
+    assert max(ols) - min(ols) < 5
+
+
+def test_small_sites_get_single_phase_suggestions(library, panel):
+    from solarpv.strings import suggest_inverters
+
+    found = suggest_inverters(panel, 14, [i for i in library.inverters if i.brand == "SolaX"])
+    assert any(inv.ac_voltage_v == 230 for inv, _, _ in found)
+    assert all(inv.ac_voltage_v <= 400 for inv, _, _ in found)

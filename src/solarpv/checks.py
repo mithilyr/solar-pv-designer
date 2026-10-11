@@ -70,6 +70,12 @@ def run_checks(design: StringDesign, site: SiteConditions, options: DesignOption
     longest = max(design.combination)
     shortest = min(design.combination)
 
+    unconnected = design.panels_available - design.panels_used
+    if unconnected:
+        checks.append(Check("Unconnected panels", "warn",
+                            f"{unconnected} of {design.panels_available} panels are not in any string. Remove them from "
+                            "the layout, add inverter capacity, or set the string lengths by hand.", "String design"))
+
     for a in design.inverters:
         inv = a.inverter
         lim = string_limits(panel, inv, site)

@@ -314,9 +314,9 @@ def design_strings(panel: Panel, inverters: list[Inverter], panels_available: in
                 if problems:
                     # Leaving panels out never fixes undersized inverters, so only
                     # keep fallbacks that use every panel we could connect.
-                    if best_invalid is None or (best_invalid.panels_used == n and (
-                            len(problems) < len(best_invalid.warnings) or (
-                            len(problems) == len(best_invalid.warnings) and score < best_invalid.score))):
+                    # Rank them by score alone: counting problems would starve some
+                    # inverters to push the others into the window.
+                    if best_invalid is None or (best_invalid.panels_used == n and score < best_invalid.score):
                         best_invalid = d
                 elif best is None or score < best.score:
                     best = d
@@ -331,13 +331,16 @@ def design_strings(panel: Panel, inverters: list[Inverter], panels_available: in
 
 
 def suggest_inverters(panel: Panel, panels: int, models: list[Inverter], options: DesignOptions | None = None,
-                      target_overload_pct: float = 25.0, grid_voltage_v: float | None = 400) -> list[tuple[Inverter, int, float]]:
-    """Single-model suggestions (model, quantity, overload %) inside the overload window, best first."""
+                      target_overload_pct: float = 25.0, max_ac_voltage_v: float | None = 400) -> list[tuple[Inverter, int, float]]:
+    """Single-model suggestions (model, quantity, overload %) inside the overload window, best first.
+
+    Medium-voltage models (AC above ``max_ac_voltage_v``) are left out; single-phase
+    230 V models stay in so small sites get suggestions too."""
     options = options or DesignOptions()
     kwp = panels * panel.pmax_w / 1000
     out = []
     for inv in models:
-        if grid_voltage_v and inv.ac_voltage_v != grid_voltage_v:
+        if max_ac_voltage_v and inv.ac_voltage_v > max_ac_voltage_v:
             continue
         for qty in range(max(1, math.floor(kwp / (inv.ac_kw * (1 + options.max_overload_pct / 100)))),
                          math.ceil(kwp / inv.ac_kw) + 2):
