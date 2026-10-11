@@ -1,0 +1,1032 @@
+{
+ "version": 1,
+ "inverters": [
+  {
+   "brand": "SolaX",
+   "model": "X1-BOOST-2.5K-G4",
+   "phase": 1,
+   "ac_kw": 2.5,
+   "max_pv_kwp": 6.0,
+   "max_dc_voltage": 600,
+   "mppt_min_v": 40,
+   "mppt_max_v": 560,
+   "start_voltage": 50,
+   "mppts": 2,
+   "strings_per_mppt": [
+    1,
+    1
+   ],
+   "max_current_per_mppt": [
+    16,
+    16
+   ],
+   "max_isc_per_mppt": [
+    22,
+    22
+   ],
+   "source": "SolaX X1-BOOST G4 datasheet",
+   "ac_voltage_v": 230
+  },
+  {
+   "brand": "SolaX",
+   "model": "X1-BOOST-3K-G4",
+   "phase": 1,
+   "ac_kw": 3.0,
+   "max_pv_kwp": 6.0,
+   "max_dc_voltage": 600,
+   "mppt_min_v": 40,
+   "mppt_max_v": 560,
+   "start_voltage": 50,
+   "mppts": 2,
+   "strings_per_mppt": [
+    1,
+    1
+   ],
+   "max_current_per_mppt": [
+    16,
+    16
+   ],
+   "max_isc_per_mppt": [
+    22,
+    22
+   ],
+   "source": "SolaX X1-BOOST G4 datasheet",
+   "ac_voltage_v": 230
+  },
+  {
+   "brand": "SolaX",
+   "model": "X1-BOOST-3.3K-G4",
+   "phase": 1,
+   "ac_kw": 3.3,
+   "max_pv_kwp": 6.6,
+   "max_dc_voltage": 600,
+   "mppt_min_v": 40,
+   "mppt_max_v": 560,
+   "start_voltage": 50,
+   "mppts": 2,
+   "strings_per_mppt": [
+    1,
+    1
+   ],
+   "max_current_per_mppt": [
+    16,
+    16
+   ],
+   "max_isc_per_mppt": [
+    22,
+    22
+   ],
+   "source": "SolaX X1-BOOST G4 datasheet",
+   "ac_voltage_v": 230
+  },
+  {
+   "brand": "SolaX",
+   "model": "X1-BOOST-3.6K-G4",
+   "phase": 1,
+   "ac_kw": 3.68,
+   "max_pv_kwp": 7.2,
+   "max_dc_voltage": 600,
+   "mppt_min_v": 40,
+   "mppt_max_v": 560,
+   "start_voltage": 50,
+   "mppts": 2,
+   "strings_per_mppt": [
+    1,
+    1
+   ],
+   "max_current_per_mppt": [
+    16,
+    16
+   ],
+   "max_isc_per_mppt": [
+    22,
+    22
+   ],
+   "source": "SolaX X1-BOOST G4 datasheet",
+   "ac_voltage_v": 230
+  },
+  {
+   "brand": "SolaX",
+   "model": "X1-BOOST-4K-G4",
+   "phase": 1,
+   "ac_kw": 4.0,
+   "max_pv_kwp": 8.0,
+   "max_dc_voltage": 600,
+   "mppt_min_v": 40,
+   "mppt_max_v": 560,
+   "start_voltage": 50,
+   "mppts": 2,
+   "strings_per_mppt": [
+    1,
+    1
+   ],
+   "max_current_per_mppt": [
+    16,
+    16
+   ],
+   "max_isc_per_mppt": [
+    22,
+    22
+   ],
+   "source": "SolaX X1-BOOST G4 datasheet",
+   "ac_voltage_v": 230
+  },
+  {
+   "brand": "SolaX",
+   "model": "X1-BOOST-4.2K-G4",
+   "phase": 1,
+   "ac_kw": 4.2,
+   "max_pv_kwp": 8.0,
+   "max_dc_voltage": 600,
+   "mppt_min_v": 40,
+   "mppt_max_v": 560,
+   "start_voltage": 50,
+   "mppts": 2,
+   "strings_per_mppt": [
+    1,
+    1
+   ],
+   "max_current_per_mppt": [
+    16,
+    16
+   ],
+   "max_isc_per_mppt": [
+    22,
+    22
+   ],
+   "source": "SolaX X1-BOOST G4 datasheet",
+   "ac_voltage_v": 230
+  },
+  {
+   "brand": "SolaX",
+   "model": "X1-BOOST-5K-G4",
+   "phase": 1,
+   "ac_kw": 5.0,
+   "max_pv_kwp": 10.0,
+   "max_dc_voltage": 600,
+   "mppt_min_v": 40,
+   "mppt_max_v": 560,
+   "start_voltage": 50,
+   "mppts": 2,
+   "strings_per_mppt": [
+    1,
+    1
+   ],
+   "max_current_per_mppt": [
+    16,
+    16
+   ],
+   "max_isc_per_mppt": [
+    22,
+    22
+   ],
+   "source": "SolaX X1-BOOST G4 datasheet",
+   "ac_voltage_v": 230
+  },
+  {
+   "brand": "SolaX",
+   "model": "X1-BOOST-6K-G4",
+   "phase": 1,
+   "ac_kw": 6.0,
+   "max_pv_kwp": 12.0,
+   "max_dc_voltage": 600,
+   "mppt_min_v": 40,
+   "mppt_max_v": 560,
+   "start_voltage": 50,
+   "mppts": 2,
+   "strings_per_mppt": [
+    1,
+    1
+   ],
+   "max_current_per_mppt": [
+    16,
+    16
+   ],
+   "max_isc_per_mppt": [
+    22,
+    22
+   ],
+   "source": "SolaX X1-BOOST G4 datasheet",
+   "ac_voltage_v": 230
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-MIC-3K-G2",
+   "phase": 3,
+   "ac_kw": 3.0,
+   "max_pv_kwp": 6.0,
+   "max_dc_voltage": 1000,
+   "mppt_min_v": 120,
+   "mppt_max_v": 980,
+   "start_voltage": 150,
+   "mppts": 2,
+   "strings_per_mppt": [
+    1,
+    1
+   ],
+   "max_current_per_mppt": [
+    16,
+    16
+   ],
+   "max_isc_per_mppt": [
+    20,
+    20
+   ],
+   "source": "SolaX X3-MIC G2 datasheet",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-MIC-4K-G2",
+   "phase": 3,
+   "ac_kw": 4.0,
+   "max_pv_kwp": 8.0,
+   "max_dc_voltage": 1000,
+   "mppt_min_v": 120,
+   "mppt_max_v": 980,
+   "start_voltage": 150,
+   "mppts": 2,
+   "strings_per_mppt": [
+    1,
+    1
+   ],
+   "max_current_per_mppt": [
+    16,
+    16
+   ],
+   "max_isc_per_mppt": [
+    20,
+    20
+   ],
+   "source": "SolaX X3-MIC G2 datasheet",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-MIC-5K-G2",
+   "phase": 3,
+   "ac_kw": 5.0,
+   "max_pv_kwp": 10.0,
+   "max_dc_voltage": 1000,
+   "mppt_min_v": 120,
+   "mppt_max_v": 980,
+   "start_voltage": 150,
+   "mppts": 2,
+   "strings_per_mppt": [
+    1,
+    1
+   ],
+   "max_current_per_mppt": [
+    16,
+    16
+   ],
+   "max_isc_per_mppt": [
+    20,
+    20
+   ],
+   "source": "SolaX X3-MIC G2 datasheet",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-MIC-6K-G2",
+   "phase": 3,
+   "ac_kw": 6.0,
+   "max_pv_kwp": 12.0,
+   "max_dc_voltage": 1000,
+   "mppt_min_v": 120,
+   "mppt_max_v": 980,
+   "start_voltage": 150,
+   "mppts": 2,
+   "strings_per_mppt": [
+    1,
+    1
+   ],
+   "max_current_per_mppt": [
+    16,
+    16
+   ],
+   "max_isc_per_mppt": [
+    20,
+    20
+   ],
+   "source": "SolaX X3-MIC G2 datasheet",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-MIC-8K-G2",
+   "phase": 3,
+   "ac_kw": 8.0,
+   "max_pv_kwp": 16.0,
+   "max_dc_voltage": 1000,
+   "mppt_min_v": 120,
+   "mppt_max_v": 980,
+   "start_voltage": 150,
+   "mppts": 2,
+   "strings_per_mppt": [
+    1,
+    1
+   ],
+   "max_current_per_mppt": [
+    16,
+    16
+   ],
+   "max_isc_per_mppt": [
+    20,
+    20
+   ],
+   "source": "SolaX X3-MIC G2 datasheet",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-MIC-10K-G2",
+   "phase": 3,
+   "ac_kw": 10.0,
+   "max_pv_kwp": 20.0,
+   "max_dc_voltage": 1000,
+   "mppt_min_v": 120,
+   "mppt_max_v": 980,
+   "start_voltage": 150,
+   "mppts": 2,
+   "strings_per_mppt": [
+    1,
+    1
+   ],
+   "max_current_per_mppt": [
+    16,
+    16
+   ],
+   "max_isc_per_mppt": [
+    20,
+    20
+   ],
+   "source": "SolaX X3-MIC G2 datasheet",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-MIC-12K-G2",
+   "phase": 3,
+   "ac_kw": 12.0,
+   "max_pv_kwp": 24.0,
+   "max_dc_voltage": 1000,
+   "mppt_min_v": 120,
+   "mppt_max_v": 980,
+   "start_voltage": 150,
+   "mppts": 2,
+   "strings_per_mppt": [
+    2,
+    1
+   ],
+   "max_current_per_mppt": [
+    32,
+    16
+   ],
+   "max_isc_per_mppt": [
+    40,
+    20
+   ],
+   "source": "SolaX X3-MIC G2 datasheet",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-MIC-15K-G2",
+   "phase": 3,
+   "ac_kw": 15.0,
+   "max_pv_kwp": 30.0,
+   "max_dc_voltage": 1000,
+   "mppt_min_v": 120,
+   "mppt_max_v": 980,
+   "start_voltage": 150,
+   "mppts": 2,
+   "strings_per_mppt": [
+    2,
+    1
+   ],
+   "max_current_per_mppt": [
+    32,
+    16
+   ],
+   "max_isc_per_mppt": [
+    40,
+    20
+   ],
+   "source": "SolaX X3-MIC G2 datasheet",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-MGA-40K-G2",
+   "phase": 3,
+   "ac_kw": 40.0,
+   "max_pv_kwp": 60.0,
+   "max_dc_voltage": 1100,
+   "mppt_min_v": 180,
+   "mppt_max_v": 1000,
+   "start_voltage": 200,
+   "mppts": 4,
+   "strings_per_mppt": [
+    2,
+    2,
+    2,
+    2
+   ],
+   "max_current_per_mppt": [
+    32,
+    32,
+    32,
+    32
+   ],
+   "max_isc_per_mppt": [
+    46,
+    46,
+    46,
+    46
+   ],
+   "source": "SolaX X3-MEGA G2 datasheet",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-MGA-50K-G2",
+   "phase": 3,
+   "ac_kw": 50.0,
+   "max_pv_kwp": 75.0,
+   "max_dc_voltage": 1100,
+   "mppt_min_v": 180,
+   "mppt_max_v": 1000,
+   "start_voltage": 200,
+   "mppts": 5,
+   "strings_per_mppt": [
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "max_current_per_mppt": [
+    32,
+    32,
+    32,
+    32,
+    32
+   ],
+   "max_isc_per_mppt": [
+    46,
+    46,
+    46,
+    46,
+    46
+   ],
+   "source": "SolaX X3-MEGA G2 datasheet",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-MGA-60K-G2",
+   "phase": 3,
+   "ac_kw": 60.0,
+   "max_pv_kwp": 90.0,
+   "max_dc_voltage": 1100,
+   "mppt_min_v": 180,
+   "mppt_max_v": 1000,
+   "start_voltage": 200,
+   "mppts": 6,
+   "strings_per_mppt": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "max_current_per_mppt": [
+    32,
+    32,
+    32,
+    32,
+    32,
+    32
+   ],
+   "max_isc_per_mppt": [
+    46,
+    46,
+    46,
+    46,
+    46,
+    46
+   ],
+   "source": "SolaX X3-MEGA G2 datasheet",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-FTH-75K",
+   "phase": 3,
+   "ac_kw": 75.0,
+   "max_pv_kwp": 120.0,
+   "max_dc_voltage": 1100,
+   "mppt_min_v": 180,
+   "mppt_max_v": 1000,
+   "start_voltage": 200,
+   "mppts": 9,
+   "strings_per_mppt": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "max_current_per_mppt": [
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32
+   ],
+   "max_isc_per_mppt": [
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46
+   ],
+   "source": "SolaX X3-FORTH datasheet V3.1.1",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-FTH-80K",
+   "phase": 3,
+   "ac_kw": 80.0,
+   "max_pv_kwp": 120.0,
+   "max_dc_voltage": 1100,
+   "mppt_min_v": 180,
+   "mppt_max_v": 1000,
+   "start_voltage": 200,
+   "mppts": 9,
+   "strings_per_mppt": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "max_current_per_mppt": [
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32
+   ],
+   "max_isc_per_mppt": [
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46
+   ],
+   "source": "SolaX X3-FORTH datasheet V3.1.1",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-FTH-100K",
+   "phase": 3,
+   "ac_kw": 100.0,
+   "max_pv_kwp": 150.0,
+   "max_dc_voltage": 1100,
+   "mppt_min_v": 180,
+   "mppt_max_v": 1000,
+   "start_voltage": 200,
+   "mppts": 9,
+   "strings_per_mppt": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "max_current_per_mppt": [
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32
+   ],
+   "max_isc_per_mppt": [
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46
+   ],
+   "source": "SolaX X3-FORTH datasheet V3.1.1",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-FTH-110K",
+   "phase": 3,
+   "ac_kw": 110.0,
+   "max_pv_kwp": 165.0,
+   "max_dc_voltage": 1100,
+   "mppt_min_v": 180,
+   "mppt_max_v": 1000,
+   "start_voltage": 200,
+   "mppts": 9,
+   "strings_per_mppt": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "max_current_per_mppt": [
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32
+   ],
+   "max_isc_per_mppt": [
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46
+   ],
+   "source": "SolaX X3-FORTH datasheet V3.1.1",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-FTH-120K",
+   "phase": 3,
+   "ac_kw": 120.0,
+   "max_pv_kwp": 180.0,
+   "max_dc_voltage": 1100,
+   "mppt_min_v": 180,
+   "mppt_max_v": 1000,
+   "start_voltage": 200,
+   "mppts": 12,
+   "strings_per_mppt": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "max_current_per_mppt": [
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32
+   ],
+   "max_isc_per_mppt": [
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46
+   ],
+   "source": "SolaX X3-FORTH datasheet V3.1.1",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-FTH-125K",
+   "phase": 3,
+   "ac_kw": 125.0,
+   "max_pv_kwp": 188.0,
+   "max_dc_voltage": 1100,
+   "mppt_min_v": 180,
+   "mppt_max_v": 1000,
+   "start_voltage": 200,
+   "mppts": 12,
+   "strings_per_mppt": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "max_current_per_mppt": [
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32
+   ],
+   "max_isc_per_mppt": [
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46
+   ],
+   "source": "SolaX X3-FORTH datasheet V3.1.1",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-FTH-136K-MV",
+   "phase": 3,
+   "ac_kw": 136.0,
+   "max_pv_kwp": 204.0,
+   "max_dc_voltage": 1100,
+   "mppt_min_v": 180,
+   "mppt_max_v": 1000,
+   "start_voltage": 200,
+   "mppts": 12,
+   "strings_per_mppt": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "max_current_per_mppt": [
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32
+   ],
+   "max_isc_per_mppt": [
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46
+   ],
+   "source": "SolaX X3-FORTH datasheet V3.1.1 (500/540 V AC output)",
+   "ac_voltage_v": 540
+  },
+  {
+   "brand": "SolaX",
+   "model": "X3-FTH-150K-MV",
+   "phase": 3,
+   "ac_kw": 150.0,
+   "max_pv_kwp": 225.0,
+   "max_dc_voltage": 1100,
+   "mppt_min_v": 180,
+   "mppt_max_v": 1000,
+   "start_voltage": 200,
+   "mppts": 12,
+   "strings_per_mppt": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "max_current_per_mppt": [
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32
+   ],
+   "max_isc_per_mppt": [
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46,
+    46
+   ],
+   "source": "SolaX X3-FORTH datasheet V3.1.1 (500/540 V AC output)",
+   "ac_voltage_v": 540
+  },
+  {
+   "brand": "SMA",
+   "model": "STP 110-60 (Sunny Tripower CORE2)",
+   "phase": 3,
+   "ac_kw": 110.0,
+   "max_pv_kwp": 165.0,
+   "max_dc_voltage": 1100,
+   "mppt_min_v": 500,
+   "mppt_max_v": 800,
+   "start_voltage": 250,
+   "mppts": 12,
+   "strings_per_mppt": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "max_current_per_mppt": [
+    26,
+    26,
+    26,
+    26,
+    26,
+    26,
+    26,
+    26,
+    26,
+    26,
+    26,
+    26
+   ],
+   "max_isc_per_mppt": [
+    40,
+    40,
+    40,
+    40,
+    40,
+    40,
+    40,
+    40,
+    40,
+    40,
+    40,
+    40
+   ],
+   "source": "SMA STP110-60-AFCI datasheet",
+   "ac_voltage_v": 400
+  },
+  {
+   "brand": "Huawei",
+   "model": "SUN2000-330KTL-H1",
+   "phase": 3,
+   "ac_kw": 330.0,
+   "max_pv_kwp": null,
+   "max_dc_voltage": 1500,
+   "mppt_min_v": 500,
+   "mppt_max_v": 1500,
+   "start_voltage": 550,
+   "mppts": 6,
+   "strings_per_mppt": [
+    4,
+    5,
+    5,
+    4,
+    5,
+    5
+   ],
+   "max_current_per_mppt": [
+    65,
+    65,
+    65,
+    65,
+    65,
+    65
+   ],
+   "max_isc_per_mppt": [
+    115,
+    115,
+    115,
+    115,
+    115,
+    115
+   ],
+   "source": "Huawei SUN2000-330KTL-H1 datasheet 2023-05-15 (800 V AC output)",
+   "ac_voltage_v": 800
+  }
+ ]
+}

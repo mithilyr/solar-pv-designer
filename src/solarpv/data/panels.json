@@ -1,0 +1,39 @@
+{
+ "version": 1,
+ "panels": [
+  {
+   "brand": "JA Solar",
+   "model": "JAM72D40-595/LB",
+   "pmax_w": 595,
+   "voc_v": 52.2,
+   "vmp_v": 43.59,
+   "isc_a": 14.42,
+   "imp_a": 13.65,
+   "temp_coeff_voc_pct": -0.26,
+   "temp_coeff_isc_pct": 0.046,
+   "temp_coeff_pmax_pct": -0.3,
+   "length_m": 2.333,
+   "width_m": 1.134,
+   "max_series_fuse_a": 30,
+   "max_system_voltage_v": 1500,
+   "source": "JA Solar DeepBlue 4.0 JAM72D40 LB datasheet; max series fuse from the TÜV certificate"
+  },
+  {
+   "brand": "JA Solar",
+   "model": "JAM72D40-600/LB",
+   "pmax_w": 600,
+   "voc_v": 52.4,
+   "vmp_v": 43.76,
+   "isc_a": 14.48,
+   "imp_a": 13.71,
+   "temp_coeff_voc_pct": -0.26,
+   "temp_coeff_isc_pct": 0.046,
+   "temp_coeff_pmax_pct": -0.3,
+   "length_m": 2.333,
+   "width_m": 1.134,
+   "max_series_fuse_a": 30,
+   "max_system_voltage_v": 1500,
+   "source": "JA Solar DeepBlue 4.0 JAM72D40 LB datasheet; max series fuse from the TÜV certificate"
+  }
+ ]
+}

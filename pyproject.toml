@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solar-pv-designer"
+dynamic = ["version"]
+description = "Rooftop solar bill of materials and string design for engineers"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+dependencies = [
+    "PySide6>=6.6",
+    "openpyxl>=3.1",
+    "ezdxf>=1.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pyinstaller>=6.6"]
+
+[project.gui-scripts]
+solar-pv-designer = "solarpv.gui.app:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "solarpv.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"solarpv.data" = ["*.json", "*.ico", "*.png"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

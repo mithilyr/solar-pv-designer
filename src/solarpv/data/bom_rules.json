@@ -1,0 +1,775 @@
+{
+ "version": 1,
+ "spares_pct": 0,
+ "common_items": [
+  {
+   "category": "PV Modules & Inverters",
+   "code": "",
+   "description": "SOLAR PANEL {panel_model}",
+   "unit": "EA",
+   "qty": "panels",
+   "round": "ceil",
+   "note": "From the layout"
+  },
+  {
+   "category": "PV Modules & Inverters",
+   "code": "",
+   "description": "DATA MANAGER / MONITORING DONGLE",
+   "unit": "EA",
+   "qty": "inverters",
+   "round": "ceil",
+   "note": "Auto_Solar_BOM v4: one per inverter"
+  },
+  {
+   "category": "PV Modules & Inverters",
+   "code": "",
+   "description": "ROUTER 4G",
+   "unit": "EA",
+   "qty": "1",
+   "round": "ceil",
+   "note": "Auto_Solar_BOM v4"
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "CABLES DC 4MM² - LAPP - BLACK",
+   "unit": "M",
+   "qty": "dc_cable_4mm_m",
+   "round": "ceil",
+   "note": "Sized for <3% DC voltage drop (PUCSL guideline 2.3)"
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "CABLES DC 4MM² - LAPP - RED",
+   "unit": "M",
+   "qty": "dc_cable_4mm_m",
+   "round": "ceil",
+   "note": ""
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "CABLES DC 6MM² - LAPP - BLACK",
+   "unit": "M",
+   "qty": "dc_cable_6mm_m",
+   "round": "ceil",
+   "note": ""
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "CABLES DC 6MM² - LAPP - RED",
+   "unit": "M",
+   "qty": "dc_cable_6mm_m",
+   "round": "ceil",
+   "note": ""
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "CABLES DC 10MM² - BLACK",
+   "unit": "M",
+   "qty": "dc_cable_10mm_m",
+   "round": "ceil",
+   "note": ""
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "CABLES DC 10MM² - RED",
+   "unit": "M",
+   "qty": "dc_cable_10mm_m",
+   "round": "ceil",
+   "note": ""
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "MC4 MALE & FEMALE PV-KST4-EVO 2/6I-UR (pair)",
+   "unit": "EA",
+   "qty": "2 * strings",
+   "round": "ceil",
+   "note": "One pair at each end of every string; add extra joints"
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "4 LINES SOLAR CABLE CLIPS",
+   "unit": "EA",
+   "qty": "2.6 * panels",
+   "round": "ceil",
+   "note": "Ratio from a 1.5 MWp project BOM (2.6 per panel)"
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "CABLE TIE BLACK 12\" 4.8",
+   "unit": "EA",
+   "qty": "0.8 * panels",
+   "round": "ceil",
+   "note": "Ratio from a 1.5 MWp project BOM"
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "CABLE TIE SS 12 X 4.8",
+   "unit": "EA",
+   "qty": "0.16 * panels",
+   "round": "ceil",
+   "note": "Ratio from a 1.5 MWp project BOM"
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "STRING FUSE gPV + HOLDER",
+   "unit": "EA",
+   "qty": "string_fuses",
+   "round": "ceil",
+   "note": "Only where (N-1) x Isc exceeds the module fuse rating (PUCSL guideline 3.1)"
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "DC SPD TYPE 2",
+   "unit": "EA",
+   "qty": "inverters * dc_spd_required",
+   "round": "ceil",
+   "note": "Compulsory when cable length L >= Lcrit (PUCSL guideline 3.4.2); skip if built into the inverter"
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "AC SPD TYPE 2",
+   "unit": "EA",
+   "qty": "inverters",
+   "round": "ceil",
+   "note": ""
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "AC MCCB 4P (per inverter)",
+   "unit": "EA",
+   "qty": "inverters",
+   "round": "ceil",
+   "note": "Rate at 1.25 x inverter max output current"
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "DC ISOLATOR (load-break, if not built into the inverter)",
+   "unit": "EA",
+   "qty": "",
+   "round": "ceil",
+   "note": "Enter manually"
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "CABLE TRAY 300 x 50 x 3.5mm - FRP",
+   "unit": "M",
+   "qty": "",
+   "round": "ceil",
+   "note": "Enter manually (site specific)"
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "CABLE TRAY LID 300 x 50 x 3mm - FRP",
+   "unit": "M",
+   "qty": "",
+   "round": "ceil",
+   "note": "Enter manually"
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "AC POWER CABLE (inverter to MDB)",
+   "unit": "M",
+   "qty": "",
+   "round": "ceil",
+   "note": "Enter manually; keep AC drop under 3%, 1% recommended"
+  },
+  {
+   "category": "Earthing & Lightning Protection",
+   "code": "",
+   "description": "CABLE 1C x 16mm² CU/PVC EARTH",
+   "unit": "M",
+   "qty": "",
+   "round": "ceil",
+   "note": "Enter manually; bare Cu earth not less than 6mm² (PUCSL guideline 3.4.1)"
+  },
+  {
+   "category": "Earthing & Lightning Protection",
+   "code": "",
+   "description": "EARTH ROD 10FT",
+   "unit": "EA",
+   "qty": "",
+   "round": "ceil",
+   "note": "Enter manually"
+  },
+  {
+   "category": "Earthing & Lightning Protection",
+   "code": "",
+   "description": "EARTH PIT CONCRETE 300X300X300MM",
+   "unit": "EA",
+   "qty": "",
+   "round": "ceil",
+   "note": "Enter manually"
+  },
+  {
+   "category": "Earthing & Lightning Protection",
+   "code": "",
+   "description": "LUG CABLE 16MM",
+   "unit": "EA",
+   "qty": "",
+   "round": "ceil",
+   "note": "Enter manually"
+  },
+  {
+   "category": "Civil, Plumbing & Chemicals",
+   "code": "",
+   "description": "PIPES PVC WATER 1/2\"",
+   "unit": "EA",
+   "qty": "",
+   "round": "ceil",
+   "note": "Enter manually (panel cleaning line)"
+  },
+  {
+   "category": "Civil, Plumbing & Chemicals",
+   "code": "",
+   "description": "SILICON SEALANT TUBES",
+   "unit": "EA",
+   "qty": "",
+   "round": "ceil",
+   "note": "Enter manually"
+  },
+  {
+   "category": "Health, Safety & Environment",
+   "code": "",
+   "description": "SAFETY HARNESS & LANYARD",
+   "unit": "EA",
+   "qty": "",
+   "round": "ceil",
+   "note": "Enter manually"
+  },
+  {
+   "category": "Health, Safety & Environment",
+   "code": "",
+   "description": "FIRE EXTINGUISHER 6KG ABC DRY POWDER",
+   "unit": "EA",
+   "qty": "",
+   "round": "ceil",
+   "note": "Enter manually"
+  }
+ ],
+ "roof_types": {
+  "trapezoidal": {
+   "label": "Trapezoidal metal sheet (trapezoid base)",
+   "variables": {
+    "mid_clamps": "2 * (panels - runs)",
+    "rail_bases": "2 * panels",
+    "screws_per_base": "1",
+    "checker_plates": "0.5 * empty_column_cells + gaps_101",
+    "walkway_bases": "6 * checker_plates"
+   },
+   "items": [
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "ALCO SOLAR MOUNTING PROFILE 5.9M (rail)",
+     "unit": "EA",
+     "qty": "0.4 * rail_bases + 0.2 * checker_plates",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "ANGLE CLAMP SET H 30mm-ALU (end clamp)",
+     "unit": "EA",
+     "qty": "4 * runs",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "T CLAMP SET BOLT-40mm-ALU-S24 (mid clamp)",
+     "unit": "EA",
+     "qty": "mid_clamps",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "CONNECTOR CLAMP SET 150mm ALU-S27+ALU S26 (rail joint)",
+     "unit": "EA",
+     "qty": "2 * runs_6_to_10 + 4 * runs_11_plus",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "TREPOZIDE SERRATED ANGLE-ALU-MM40",
+     "unit": "EA",
+     "qty": "rail_bases",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "EXTENDED SERRATED ANGLE 40MM-ALU S 45",
+     "unit": "EA",
+     "qty": "",
+     "round": "ceil",
+     "note": "Enter manually"
+    },
+    {
+     "category": "Walking Path",
+     "code": "",
+     "description": "ALU-S46-0040NA TREPOZIDE ROOF BASE 60mm",
+     "unit": "EA",
+     "qty": "walkway_bases",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Walking Path",
+     "code": "",
+     "description": "CHECKER PLATE ALU AA3003H14 2.88mm",
+     "unit": "EA",
+     "qty": "checker_plates",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4: half a plate per walkway cell, one per break in a run"
+    },
+    {
+     "category": "Civil, Plumbing & Chemicals",
+     "code": "",
+     "description": "SCREW GI AMANO 1-3/4\"",
+     "unit": "EA",
+     "qty": "screws_per_base * (rail_bases + walkway_bases)",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Earthing & Lightning Protection",
+     "code": "",
+     "description": "GROUNDING CLIP TYPE 1",
+     "unit": "EA",
+     "qty": "mid_clamps / 2",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Earthing & Lightning Protection",
+     "code": "",
+     "description": "SOLAR GROUNDING LUG KIT",
+     "unit": "EA",
+     "qty": "2 * gaps_101 + gaps_201",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4: two per break in a run, one next to a special cell"
+    }
+   ]
+  },
+  "standing_seam": {
+   "label": "Standing seam / Kalzip (clamped, no roof penetration)",
+   "variables": {
+    "mid_clamps": "2 * (panels - runs)",
+    "rail_bases": "2 * panels",
+    "screws_per_base": "1",
+    "checker_plates": "0.5 * empty_column_cells + gaps_101",
+    "walkway_bases": "6 * checker_plates"
+   },
+   "items": [
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "ALCO SOLAR MOUNTING PROFILE 5.9M (rail)",
+     "unit": "EA",
+     "qty": "0.4 * rail_bases + 0.2 * checker_plates",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "ANGLE CLAMP SET H 30mm-ALU (end clamp)",
+     "unit": "EA",
+     "qty": "4 * runs",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "T CLAMP SET BOLT-40mm-ALU-S24 (mid clamp)",
+     "unit": "EA",
+     "qty": "mid_clamps",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "CONNECTOR CLAMP SET 150mm ALU-S27+ALU S26 (rail joint)",
+     "unit": "EA",
+     "qty": "2 * runs_6_to_10 + 4 * runs_11_plus",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "KALZIP CLAMP (module mounting)",
+     "unit": "EA",
+     "qty": "rail_bases",
+     "round": "ceil",
+     "note": "Generic default, check with your mounting supplier: one seam clamp per rail base"
+    },
+    {
+     "category": "Walking Path",
+     "code": "",
+     "description": "KALZIP CLAMP (balance of system / walkway)",
+     "unit": "EA",
+     "qty": "walkway_bases",
+     "round": "ceil",
+     "note": "Generic default, check with your mounting supplier"
+    },
+    {
+     "category": "Walking Path",
+     "code": "",
+     "description": "CHECKER PLATE ALU AA3003H14 2.88mm",
+     "unit": "EA",
+     "qty": "checker_plates",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Earthing & Lightning Protection",
+     "code": "",
+     "description": "GROUNDING CLIP TYPE 1",
+     "unit": "EA",
+     "qty": "mid_clamps / 2",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Earthing & Lightning Protection",
+     "code": "",
+     "description": "SOLAR GROUNDING LUG KIT",
+     "unit": "EA",
+     "qty": "2 * gaps_101 + gaps_201",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4: two per break in a run, one next to a special cell"
+    }
+   ]
+  },
+  "amano_corrugated": {
+   "label": "Amano / corrugated sheet (screwed base)",
+   "variables": {
+    "mid_clamps": "2 * (panels - runs)",
+    "rail_bases": "2 * panels",
+    "screws_per_base": "1",
+    "checker_plates": "0.5 * empty_column_cells + gaps_101",
+    "walkway_bases": "6 * checker_plates"
+   },
+   "items": [
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "ALCO SOLAR MOUNTING PROFILE 5.9M (rail)",
+     "unit": "EA",
+     "qty": "0.4 * rail_bases + 0.2 * checker_plates",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "ANGLE CLAMP SET H 30mm-ALU (end clamp)",
+     "unit": "EA",
+     "qty": "4 * runs",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "T CLAMP SET BOLT-40mm-ALU-S24 (mid clamp)",
+     "unit": "EA",
+     "qty": "mid_clamps",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "CONNECTOR CLAMP SET 150mm ALU-S27+ALU S26 (rail joint)",
+     "unit": "EA",
+     "qty": "2 * runs_6_to_10 + 4 * runs_11_plus",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "AMANO ROOF MOUNTING BASE 100mm-ALU",
+     "unit": "EA",
+     "qty": "rail_bases",
+     "round": "ceil",
+     "note": "Generic default, check with your mounting supplier"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "SCREW G.I AMANO 4\"",
+     "unit": "EA",
+     "qty": "2 * rail_bases",
+     "round": "ceil",
+     "note": "Generic default, check with your mounting supplier: two screws per base"
+    },
+    {
+     "category": "Walking Path",
+     "code": "",
+     "description": "AMANO ROOF MOUNTING BASE 100mm-ALU (walkway)",
+     "unit": "EA",
+     "qty": "walkway_bases",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Walking Path",
+     "code": "",
+     "description": "CHECKER PLATE ALU AA3003H14 2.88mm",
+     "unit": "EA",
+     "qty": "checker_plates",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Walking Path",
+     "code": "",
+     "description": "SCREW GI AMANO 1\"",
+     "unit": "EA",
+     "qty": "screws_per_base * walkway_bases",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Civil, Plumbing & Chemicals",
+     "code": "",
+     "description": "NO LEAK STRIPS - WIDTH 2\"",
+     "unit": "EA",
+     "qty": "",
+     "round": "ceil",
+     "note": "Enter manually"
+    },
+    {
+     "category": "Civil, Plumbing & Chemicals",
+     "code": "",
+     "description": "SYNROOF HB (WHITE) - 20KG",
+     "unit": "EA",
+     "qty": "",
+     "round": "ceil",
+     "note": "Enter manually"
+    },
+    {
+     "category": "Earthing & Lightning Protection",
+     "code": "",
+     "description": "GROUNDING CLIP TYPE 1",
+     "unit": "EA",
+     "qty": "mid_clamps / 2",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Earthing & Lightning Protection",
+     "code": "",
+     "description": "SOLAR GROUNDING LUG KIT",
+     "unit": "EA",
+     "qty": "2 * gaps_101 + gaps_201",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4: two per break in a run, one next to a special cell"
+    }
+   ]
+  },
+  "concrete_flat": {
+   "label": "Concrete flat roof (tilted frames)",
+   "variables": {
+    "mid_clamps": "2 * (panels - runs)",
+    "rail_bases": "2 * panels",
+    "screws_per_base": "1"
+   },
+   "items": [
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "ALCO SOLAR MOUNTING PROFILE 5.9M (rail)",
+     "unit": "EA",
+     "qty": "0.4 * rail_bases",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "ANGLE CLAMP SET H 30mm-ALU (end clamp)",
+     "unit": "EA",
+     "qty": "4 * runs",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "T CLAMP SET BOLT-40mm-ALU-S24 (mid clamp)",
+     "unit": "EA",
+     "qty": "mid_clamps",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "CONNECTOR CLAMP SET 150mm ALU-S27+ALU S26 (rail joint)",
+     "unit": "EA",
+     "qty": "2 * runs_6_to_10 + 4 * runs_11_plus",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "TILT FRAME LEG SET (front + rear leg)",
+     "unit": "EA",
+     "qty": "rail_bases",
+     "round": "ceil",
+     "note": "Generic default, check with your mounting supplier: one set per rail base"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "CONCRETE ANCHOR BOLT M10",
+     "unit": "EA",
+     "qty": "2 * rail_bases",
+     "round": "ceil",
+     "note": "Generic default, check with your mounting supplier: two anchors per leg set"
+    },
+    {
+     "category": "Civil, Plumbing & Chemicals",
+     "code": "",
+     "description": "WATERPROOFING SEALANT AROUND ANCHORS (tubes)",
+     "unit": "EA",
+     "qty": "ceil(rail_bases / 20)",
+     "round": "ceil",
+     "note": "Generic default, check with your mounting supplier"
+    },
+    {
+     "category": "Earthing & Lightning Protection",
+     "code": "",
+     "description": "GROUNDING CLIP TYPE 1",
+     "unit": "EA",
+     "qty": "mid_clamps / 2",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Earthing & Lightning Protection",
+     "code": "",
+     "description": "SOLAR GROUNDING LUG KIT",
+     "unit": "EA",
+     "qty": "2 * gaps_101 + gaps_201",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4: two per break in a run, one next to a special cell"
+    }
+   ]
+  },
+  "clay_tile": {
+   "label": "Clay / cement tile roof (tile hooks)",
+   "variables": {
+    "mid_clamps": "2 * (panels - runs)",
+    "rail_bases": "2 * panels",
+    "screws_per_base": "1"
+   },
+   "items": [
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "ALCO SOLAR MOUNTING PROFILE 5.9M (rail)",
+     "unit": "EA",
+     "qty": "0.4 * rail_bases",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "ANGLE CLAMP SET H 30mm-ALU (end clamp)",
+     "unit": "EA",
+     "qty": "4 * runs",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "T CLAMP SET BOLT-40mm-ALU-S24 (mid clamp)",
+     "unit": "EA",
+     "qty": "mid_clamps",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "CONNECTOR CLAMP SET 150mm ALU-S27+ALU S26 (rail joint)",
+     "unit": "EA",
+     "qty": "2 * runs_6_to_10 + 4 * runs_11_plus",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "TILE ROOF HOOK SS (adjustable)",
+     "unit": "EA",
+     "qty": "rail_bases",
+     "round": "ceil",
+     "note": "Generic default, check with your mounting supplier: one hook per rail base, fixed to a rafter"
+    },
+    {
+     "category": "Mounting Structure",
+     "code": "",
+     "description": "COACH SCREW SS 8 x 80mm",
+     "unit": "EA",
+     "qty": "2 * rail_bases",
+     "round": "ceil",
+     "note": "Generic default, check with your mounting supplier"
+    },
+    {
+     "category": "Earthing & Lightning Protection",
+     "code": "",
+     "description": "GROUNDING CLIP TYPE 1",
+     "unit": "EA",
+     "qty": "mid_clamps / 2",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4"
+    },
+    {
+     "category": "Earthing & Lightning Protection",
+     "code": "",
+     "description": "SOLAR GROUNDING LUG KIT",
+     "unit": "EA",
+     "qty": "2 * gaps_101 + gaps_201",
+     "round": "ceil",
+     "note": "Rule from Auto_Solar_BOM v4: two per break in a run, one next to a special cell"
+    }
+   ]
+  }
+ }
+}
