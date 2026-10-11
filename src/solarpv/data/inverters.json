@@ -24,8 +24,9 @@
     22,
     22
    ],
-   "source": "SolaX X1-BOOST G4 datasheet",
-   "ac_voltage_v": 230
+   "ac_voltage_v": 230,
+   "dc_spd_builtin": true,
+   "source": "SolaX X1-BOOST G4 datasheet"
   },
   {
    "brand": "SolaX",
@@ -50,8 +51,9 @@
     22,
     22
    ],
-   "source": "SolaX X1-BOOST G4 datasheet",
-   "ac_voltage_v": 230
+   "ac_voltage_v": 230,
+   "dc_spd_builtin": true,
+   "source": "SolaX X1-BOOST G4 datasheet"
   },
   {
    "brand": "SolaX",
@@ -76,8 +78,9 @@
     22,
     22
    ],
-   "source": "SolaX X1-BOOST G4 datasheet",
-   "ac_voltage_v": 230
+   "ac_voltage_v": 230,
+   "dc_spd_builtin": true,
+   "source": "SolaX X1-BOOST G4 datasheet"
   },
   {
    "brand": "SolaX",
@@ -102,8 +105,9 @@
     22,
     22
    ],
-   "source": "SolaX X1-BOOST G4 datasheet",
-   "ac_voltage_v": 230
+   "ac_voltage_v": 230,
+   "dc_spd_builtin": true,
+   "source": "SolaX X1-BOOST G4 datasheet"
   },
   {
    "brand": "SolaX",
@@ -128,8 +132,9 @@
     22,
     22
    ],
-   "source": "SolaX X1-BOOST G4 datasheet",
-   "ac_voltage_v": 230
+   "ac_voltage_v": 230,
+   "dc_spd_builtin": true,
+   "source": "SolaX X1-BOOST G4 datasheet"
   },
   {
    "brand": "SolaX",
@@ -154,8 +159,9 @@
     22,
     22
    ],
-   "source": "SolaX X1-BOOST G4 datasheet",
-   "ac_voltage_v": 230
+   "ac_voltage_v": 230,
+   "dc_spd_builtin": true,
+   "source": "SolaX X1-BOOST G4 datasheet"
   },
   {
    "brand": "SolaX",
@@ -180,8 +186,9 @@
     22,
     22
    ],
-   "source": "SolaX X1-BOOST G4 datasheet",
-   "ac_voltage_v": 230
+   "ac_voltage_v": 230,
+   "dc_spd_builtin": true,
+   "source": "SolaX X1-BOOST G4 datasheet"
   },
   {
    "brand": "SolaX",
@@ -206,8 +213,9 @@
     22,
     22
    ],
-   "source": "SolaX X1-BOOST G4 datasheet",
-   "ac_voltage_v": 230
+   "ac_voltage_v": 230,
+   "dc_spd_builtin": true,
+   "source": "SolaX X1-BOOST G4 datasheet"
   },
   {
    "brand": "SolaX",
@@ -232,8 +240,9 @@
     20,
     20
    ],
-   "source": "SolaX X3-MIC G2 datasheet",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": false,
+   "source": "SolaX X3-MIC G2 datasheet"
   },
   {
    "brand": "SolaX",
@@ -258,8 +267,9 @@
     20,
     20
    ],
-   "source": "SolaX X3-MIC G2 datasheet",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": false,
+   "source": "SolaX X3-MIC G2 datasheet"
   },
   {
    "brand": "SolaX",
@@ -284,8 +294,9 @@
     20,
     20
    ],
-   "source": "SolaX X3-MIC G2 datasheet",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": false,
+   "source": "SolaX X3-MIC G2 datasheet"
   },
   {
    "brand": "SolaX",
@@ -310,8 +321,9 @@
     20,
     20
    ],
-   "source": "SolaX X3-MIC G2 datasheet",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": false,
+   "source": "SolaX X3-MIC G2 datasheet"
   },
   {
    "brand": "SolaX",
@@ -336,8 +348,9 @@
     20,
     20
    ],
-   "source": "SolaX X3-MIC G2 datasheet",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": false,
+   "source": "SolaX X3-MIC G2 datasheet"
   },
   {
    "brand": "SolaX",
@@ -362,8 +375,9 @@
     20,
     20
    ],
-   "source": "SolaX X3-MIC G2 datasheet",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": false,
+   "source": "SolaX X3-MIC G2 datasheet"
   },
   {
    "brand": "SolaX",
@@ -388,8 +402,9 @@
     40,
     20
    ],
-   "source": "SolaX X3-MIC G2 datasheet",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": false,
+   "source": "SolaX X3-MIC G2 datasheet"
   },
   {
    "brand": "SolaX",
@@ -414,8 +429,9 @@
     40,
     20
    ],
-   "source": "SolaX X3-MIC G2 datasheet",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": false,
+   "source": "SolaX X3-MIC G2 datasheet"
   },
   {
    "brand": "SolaX",
@@ -446,8 +462,9 @@
     46,
     46
    ],
-   "source": "SolaX X3-MEGA G2 datasheet",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": true,
+   "source": "SolaX X3-MEGA G2 datasheet"
   },
   {
    "brand": "SolaX",
@@ -481,8 +498,9 @@
     46,
     46
    ],
-   "source": "SolaX X3-MEGA G2 datasheet",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": true,
+   "source": "SolaX X3-MEGA G2 datasheet"
   },
   {
    "brand": "SolaX",
@@ -519,8 +537,9 @@
     46,
     46
    ],
-   "source": "SolaX X3-MEGA G2 datasheet",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": true,
+   "source": "SolaX X3-MEGA G2 datasheet"
   },
   {
    "brand": "SolaX",
@@ -566,8 +585,9 @@
     46,
     46
    ],
-   "source": "SolaX X3-FORTH datasheet V3.1.1",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": true,
+   "source": "SolaX X3-FORTH datasheet V3.1.1"
   },
   {
    "brand": "SolaX",
@@ -613,8 +633,9 @@
     46,
     46
    ],
-   "source": "SolaX X3-FORTH datasheet V3.1.1",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": true,
+   "source": "SolaX X3-FORTH datasheet V3.1.1"
   },
   {
    "brand": "SolaX",
@@ -660,8 +681,9 @@
     46,
     46
    ],
-   "source": "SolaX X3-FORTH datasheet V3.1.1",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": true,
+   "source": "SolaX X3-FORTH datasheet V3.1.1"
   },
   {
    "brand": "SolaX",
@@ -707,8 +729,9 @@
     46,
     46
    ],
-   "source": "SolaX X3-FORTH datasheet V3.1.1",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": true,
+   "source": "SolaX X3-FORTH datasheet V3.1.1"
   },
   {
    "brand": "SolaX",
@@ -763,8 +786,9 @@
     46,
     46
    ],
-   "source": "SolaX X3-FORTH datasheet V3.1.1",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": true,
+   "source": "SolaX X3-FORTH datasheet V3.1.1"
   },
   {
    "brand": "SolaX",
@@ -819,8 +843,9 @@
     46,
     46
    ],
-   "source": "SolaX X3-FORTH datasheet V3.1.1",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": true,
+   "source": "SolaX X3-FORTH datasheet V3.1.1"
   },
   {
    "brand": "SolaX",
@@ -875,8 +900,9 @@
     46,
     46
    ],
-   "source": "SolaX X3-FORTH datasheet V3.1.1 (500/540 V AC output)",
-   "ac_voltage_v": 540
+   "ac_voltage_v": 540,
+   "dc_spd_builtin": true,
+   "source": "SolaX X3-FORTH datasheet V3.1.1 (500/540 V AC output)"
   },
   {
    "brand": "SolaX",
@@ -931,8 +957,9 @@
     46,
     46
    ],
-   "source": "SolaX X3-FORTH datasheet V3.1.1 (500/540 V AC output)",
-   "ac_voltage_v": 540
+   "ac_voltage_v": 540,
+   "dc_spd_builtin": true,
+   "source": "SolaX X3-FORTH datasheet V3.1.1 (500/540 V AC output)"
   },
   {
    "brand": "SMA",
@@ -987,8 +1014,9 @@
     40,
     40
    ],
-   "source": "SMA STP110-60-AFCI datasheet",
-   "ac_voltage_v": 400
+   "ac_voltage_v": 400,
+   "dc_spd_builtin": true,
+   "source": "SMA STP110-60-AFCI datasheet"
   },
   {
    "brand": "Huawei",
@@ -1025,8 +1053,9 @@
     115,
     115
    ],
-   "source": "Huawei SUN2000-330KTL-H1 datasheet 2023-05-15 (800 V AC output)",
-   "ac_voltage_v": 800
+   "ac_voltage_v": 800,
+   "dc_spd_builtin": true,
+   "source": "Huawei SUN2000-330KTL-H1 datasheet 2023-05-15 (800 V AC output)"
   }
  ]
 }

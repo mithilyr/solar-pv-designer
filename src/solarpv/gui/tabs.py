@@ -11,6 +11,7 @@ from PySide6.QtWidgets import (QCheckBox, QComboBox, QFileDialog, QFormLayout, Q
 
 from ..bom import typical_run_length
 from ..layout import EMPTY, LayoutError, panel_count, read_layout, write_csv
+from ..checks import INSTALLATION_TYPES, THUNDER_DAYS_BY_DISTRICT
 from ..project import InverterChoice, Project, ProjectResult, Roof, estimate_route_m
 from ..strings import SITE_PRESETS, SiteConditions, string_limits, suggest_inverters
 from .dialogs import DxfDialog, RoofDimensionsDialog
@@ -32,7 +33,13 @@ class ProjectTab(QWidget):
         self.t_min = spin(18, -20, 40, 1, 1, " °C")
         self.t_max = spin(36, 10, 55, 1, 1, " °C")
         self.rise = spin(30, 10, 45, 1, 1, " °C")
-        self.thunder = spin(100, 1, 250, 5, 0, " days/year")
+        self.district = QComboBox()
+        self.district.addItem("Other / enter thunder days")
+        self.district.addItems(sorted(THUNDER_DAYS_BY_DISTRICT))
+        self.thunder = spin(110, 1, 250, 5, 0, " days/year")
+        self.installation = QComboBox()
+        for key, (label, factor) in INSTALLATION_TYPES.items():
+            self.installation.addItem(f"{label} (Lcrit = {factor}/Ng)", key)
         self.ol_min = spin(18.5, -50, 100, 0.5, 1, " %")
         self.ol_max = spin(31.5, -50, 100, 0.5, 1, " %")
         self.margin = spin(30, 0, 100, 5, 0, " %")
@@ -52,7 +59,9 @@ class ProjectTab(QWidget):
         f.addRow("Lowest ambient temperature", self.t_min)
         f.addRow("Highest ambient temperature", self.t_max)
         f.addRow("Cell temperature rise in full sun", self.rise)
-        f.addRow("Thunder days (Annex A of the guideline)", self.thunder)
+        f.addRow("District (guideline Annex A thunder map)", self.district)
+        f.addRow("Thunder days per year", self.thunder)
+        f.addRow("Installation type (surge protection)", self.installation)
 
         rules = QGroupBox("Design rules")
         f = QFormLayout(rules)
@@ -72,13 +81,16 @@ class ProjectTab(QWidget):
         col.addWidget(rules)
         note = QLabel("Checks follow the PUCSL “Guidelines on Rooftop Solar PV Installation for Solar Service "
                       "Providers” (Rev 1, Sept 2022): DC ratings at 1.15 × Voc and 1.25 × Isc, string fuses, "
-                      "DC drop under 3%, and surge protection against Lcrit.")
+                      "DC drop under 3%, and surge protection against Lcrit with SPDs at the inverter and, "
+                      "for routes over 10 m, near the modules.")
         note.setWordWrap(True)
         col.addWidget(note)
         col.addStretch()
         layout.addLayout(col, 1)
 
         self.preset.currentTextChanged.connect(self._preset)
+        self.district.currentTextChanged.connect(self._district)
+        self.installation.currentIndexChanged.connect(self._store)
         for w in (self.name, self.client, self.location, self.designer):
             w.editingFinished.connect(self._store)
         for w in (self.t_min, self.t_max, self.rise, self.thunder, self.ol_min, self.ol_max, self.margin,
@@ -92,6 +104,11 @@ class ProjectTab(QWidget):
             self.t_max.setValue(s.max_ambient_c)
         self._store()
 
+    def _district(self, name: str) -> None:
+        if name in THUNDER_DAYS_BY_DISTRICT:
+            self.thunder.setValue(THUNDER_DAYS_BY_DISTRICT[name])
+        self._store()
+
     def load(self, project: Project) -> None:
         self.project = None
         self.name.setText(project.name)
@@ -102,7 +119,9 @@ class ProjectTab(QWidget):
         self.t_min.setValue(project.site.min_ambient_c)
         self.t_max.setValue(project.site.max_ambient_c)
         self.rise.setValue(project.site.cell_rise_c)
+        self.district.setCurrentText(project.district or self.district.itemText(0))
         self.thunder.setValue(project.thunder_days)
+        self.installation.setCurrentIndex(max(0, self.installation.findData(project.installation_type)))
         self.ol_min.setValue(project.options.min_overload_pct)
         self.ol_max.setValue(project.options.max_overload_pct)
         self.margin.setValue(project.cable_margin_pct)
@@ -118,7 +137,9 @@ class ProjectTab(QWidget):
         p.location, p.designer = self.location.text(), self.designer.text()
         p.site_preset = self.preset.currentText() if self.preset.currentIndex() else ""
         p.site = SiteConditions(self.t_min.value(), self.t_max.value(), self.rise.value())
+        p.district = self.district.currentText() if self.district.currentIndex() else ""
         p.thunder_days = self.thunder.value()
+        p.installation_type = self.installation.currentData() or "building"
         p.options.min_overload_pct, p.options.max_overload_pct = self.ol_min.value(), self.ol_max.value()
         p.cable_margin_pct, p.vertical_drop_m = self.margin.value(), self.drop.value()
         p.max_dc_drop_pct = self.dc_drop.value()

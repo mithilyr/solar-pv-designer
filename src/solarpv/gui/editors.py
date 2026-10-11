@@ -22,6 +22,8 @@ LIST_FIELDS = {"strings_per_mppt", "max_current_per_mppt", "max_isc_per_mppt"}
 def _to_text(v) -> str:
     if v is None:
         return ""
+    if isinstance(v, bool):
+        return "yes" if v else "no"
     if isinstance(v, list):
         return ", ".join(f"{x:g}" if isinstance(x, float) else str(x) for x in v)
     if isinstance(v, float):
@@ -35,6 +37,8 @@ def _parse(cls, name: str, text: str):
     if name in LIST_FIELDS:
         conv = int if name == "strings_per_mppt" else float
         return [conv(x) for x in text.replace(";", ",").split(",") if x.strip()]
+    if "bool" in str(ftype):
+        return text.lower() in ("yes", "y", "true", "1")
     if "float" in str(ftype):
         if not text and "None" in str(ftype):
             return None
@@ -118,7 +122,8 @@ class LibraryTab(QWidget):
                                    "max_series_fuse_a is on the datasheet as 'maximum series fuse rating'.")
         self.inverters = _RecordTable(Inverter, INVERTER_FIELDS,
                                       "One value per MPPT in the list columns, separated by commas (e.g. 2, 2, 2). "
-                                      "max_pv_kwp is the datasheet's 'max recommended PV array power'; leave blank if not given.")
+                                      "max_pv_kwp is the datasheet's 'max recommended PV array power'; leave blank if not given. "
+                                      "dc_spd_builtin: yes if the datasheet lists a Type II DC surge arrester.")
         tabs = QTabWidget()
         tabs.addTab(self.inverters, "Inverters")
         tabs.addTab(self.panels, "Panels")

@@ -195,7 +195,9 @@ def _mppt_can_take(inv: Inverter, m: MPPTAssignment, size: int, panel: Panel, si
 def allocate(panel: Panel, inverters: list[Inverter], combo: dict[int, int], site: SiteConditions,
              options: DesignOptions) -> list[InverterAssignment] | None:
     """Greedy, deterministic allocation: biggest strings first, to the inverter
-    furthest below its share of DC power, filling MPPTs of the same size first."""
+    furthest below its share of DC power, pairing strings of the same length
+    on one MPPT. Pairs are then split onto any idle MPPTs, so every tracker is
+    used before any carries two strings."""
     assignments = [
         InverterAssignment(inv, k + 1, [MPPTAssignment(j + 1) for j in range(inv.mppts)])
         for k, inv in enumerate(inverters)
@@ -227,17 +229,31 @@ def allocate(panel: Panel, inverters: list[Inverter], combo: dict[int, int], sit
             a, slot = best
             slot.string_size = size
             slot.strings += 1
+    for a in assignments:
+        _spread_over_idle_mppts(a, panel, site)
     return assignments
 
 
+def _spread_over_idle_mppts(a: InverterAssignment, panel: Panel, site: SiteConditions) -> None:
+    """Move one string of a doubled MPPT onto each idle MPPT that can take it."""
+    for idle in a.mppts:
+        if idle.strings:
+            continue
+        doubled = [m for m in a.mppts if m.strings >= 2 and _mppt_can_take(a.inverter, idle, m.string_size, panel, site)]
+        if not doubled:
+            continue
+        src = max(doubled, key=lambda m: (m.strings, -m.index))
+        src.strings -= 1
+        idle.string_size, idle.strings = src.string_size, 1
+
+
 def _score(design: list[InverterAssignment], panel: Panel, options: DesignOptions, left_out: int) -> float:
-    """Lower is better: even loading first, then tidy MPPT use, then fewer panels left out."""
+    """Lower is better: even loading first, then one string length per inverter, then fewer panels left out."""
     ols = [a.overload_pct(panel) for a in design]
     mean = sum(ols) / len(ols)
     variance = sum((o - mean) ** 2 for o in ols) / len(ols)
     mixed = sum(1 for a in design if len({m.string_size for m in a.mppts if m.strings}) > 1)
-    odd_mppts = sum(1 for a in design for m in a.mppts if m.strings == 1 and a.inverter.strings_per_mppt[m.index - 1] > 1)
-    return variance * 100 + mixed * 5 + odd_mppts * 1 + left_out * 50
+    return variance * 100 + mixed * 5 + left_out * 50
 
 
 def check_inverter(a: InverterAssignment, panel: Panel, options: DesignOptions) -> list[str]:

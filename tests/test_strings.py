@@ -72,3 +72,26 @@ def test_small_sites_get_single_phase_suggestions(library, panel):
     found = suggest_inverters(panel, 14, [i for i in library.inverters if i.brand == "SolaX"])
     assert any(inv.ac_voltage_v == 230 for inv, _, _ in found)
     assert all(inv.ac_voltage_v <= 400 for inv, _, _ in found)
+
+
+def test_strings_use_every_mppt_before_doubling_up(library, panel):
+    inv = library.inverter("SolaX X3-MIC-12K-G2")
+    d = design_strings(panel, [inv], 24, SiteConditions(), sizes=[12])
+    assert [m.strings for m in d.inverters[0].mppts] == [1, 1]
+
+
+def test_surge_protection_follows_guideline_3_4_2(library, panel):
+    from solarpv.checks import spd_plan
+
+    assert lcrit_m(100, "residential") < lcrit_m(100, "ground") < lcrit_m(100, "building")
+    forth = library.inverter("SolaX X3-FTH-125K")
+    mic = library.inverter("SolaX X3-MIC-12K-G2")
+    assert forth.dc_spd_builtin and not mic.dc_spd_builtin
+    d = design_strings(panel, [forth], 252, SiteConditions(), sizes=[12])
+    used = sum(1 for m in d.inverters[0].mppts if m.strings)
+    assert spd_plan(d, 5, 110).compulsory is False
+    plan = spd_plan(d, 60, 110)  # built-in SPD covers the inverter end; over 10 m adds the array end
+    assert (plan.inverter_end, plan.array_end) == (0, used)
+    d = design_strings(panel, [mic], 24, SiteConditions(), sizes=[12])
+    plan = spd_plan(d, 60, 110)
+    assert (plan.inverter_end, plan.array_end) == (2, 2)

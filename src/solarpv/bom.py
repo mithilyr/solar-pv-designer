@@ -37,6 +37,9 @@ FEATURE_HELP = {
     "dc_cable_10mm_m": "Metres of 10 mm² DC cable per colour",
     "string_fuses": "gPV string fuses needed (both legs)",
     "dc_spd_required": "1 if a DC SPD is compulsory (cable length over Lcrit), else 0",
+    "dc_spd_inverter_end": "DC SPDs needed at the inverters (MPPTs in use on inverters without a built-in DC SPD)",
+    "dc_spd_array_end": "DC SPDs needed near the modules (MPPTs in use, when the route is over 10 m)",
+    "dc_spd_array_boxes": "Enclosures for the array-end DC SPDs (one per inverter)",
 }
 
 

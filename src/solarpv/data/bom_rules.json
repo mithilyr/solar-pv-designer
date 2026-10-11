@@ -131,11 +131,29 @@
   {
    "category": "DC & AC Electrical",
    "code": "",
-   "description": "DC SPD TYPE 2",
+   "description": "DC SPD TYPE 2 (inverter end)",
    "unit": "EA",
-   "qty": "inverters * dc_spd_required",
+   "qty": "dc_spd_inverter_end",
    "round": "ceil",
-   "note": "Compulsory when cable length L >= Lcrit (PUCSL guideline 3.4.2); skip if built into the inverter"
+   "note": "One per MPPT in use when L >= Lcrit, unless the inverter has a built-in DC SPD (PUCSL guideline 3.4.2)"
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "DC SPD TYPE 2 (array end)",
+   "unit": "EA",
+   "qty": "dc_spd_array_end",
+   "round": "ceil",
+   "note": "One per MPPT in use when L >= Lcrit and the route is over 10 m (PUCSL guideline 3.4.2)"
+  },
+  {
+   "category": "DC & AC Electrical",
+   "code": "",
+   "description": "DC SPD ENCLOSURE IP65 (array end)",
+   "unit": "EA",
+   "qty": "dc_spd_array_boxes",
+   "round": "ceil",
+   "note": "One per inverter, close to the modules"
   },
   {
    "category": "DC & AC Electrical",

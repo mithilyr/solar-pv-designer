@@ -14,7 +14,7 @@ Download `SolarPVDesigner-Setup-x.y.z.exe` from the [Releases](../../releases) p
 
 ## How to use it
 
-1. **Project**: name the site and pick the climate region. The lowest temperature sets the maximum string length (cold panels give higher voltage), so choose *Hill country* for Nuwara Eliya and similar sites.
+1. **Project**: name the site, pick the climate region and the district (for thunder days), and say whether it is a house, a commercial or industrial building, or a ground-mounted plant. The lowest temperature sets the maximum string length (cold panels give higher voltage), so choose *Hill country* for Nuwara Eliya and similar sites.
 2. **Roofs**: add each roof face in one of three ways:
    - **From roof dimensions**: measure the roof in Google Earth Pro with the ruler tool, then enter its length (along the rails), width, slope and setbacks. The app fits the panels and shows the result.
    - **Import AutoCAD DXF**: in AutoCAD, `SAVEAS` the layout as DXF. Panels drawn as copies of one block, or as closed rectangles, become the grid.
@@ -42,7 +42,8 @@ Download `SolarPVDesigner-Setup-x.y.z.exe` from the [Releases](../../releases) p
 | DC ratings | 1.15 × Voc(STC) × M and 1.25 × Isc (guideline §2.1, §2.3) |
 | String fuses | Needed when (N−1) × Isc exceeds the module's series fuse rating; fuse sized between 1.5 and 2.4 × Isc (§3.1) |
 | DC voltage drop | Below 3% at maximum power (§2.3); the cable size is chosen to meet it |
-| Surge protection | DC SPD compulsory when the cable length is at least Lcrit = 450/Ng for buildings (§3.4.2). Ng uses 0.04 × Td^1.25 from IEC 62305-2. The guideline prints the exponent as 1.12; 1.25 is the more cautious of the two |
+| Surge protection | DC SPD compulsory when the DC cable length is at least Lcrit (§3.4.2): 450/Ng for commercial and industrial buildings, 115/Ng for houses, 200/Ng for ground-mounted plant. Thunder days come from the district map in Annex A (the top of each band). Ng uses 0.04 × Td^1.25 from IEC 62305-2; the guideline prints the exponent as 1.12, and 1.25 is the more cautious of the two. Inverters with a built-in Type II DC SPD need none at the inverter end; routes over 10 m need a second set near the modules |
+| MPPT layout | Every MPPT gets a string before any MPPT takes two, and two strings share an MPPT only when they are the same length. Strings that run across roofs, or MPPTs fed from two roofs, are flagged (Annex B item 10) |
 
 The tool helps with design but does not replace an engineer's review. Check every design against the site and the latest datasheets before construction.
 

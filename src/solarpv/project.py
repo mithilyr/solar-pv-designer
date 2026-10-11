@@ -9,7 +9,7 @@ from pathlib import Path
 
 from . import __version__
 from .bom import BomLine, BomResult, BomRules, compute_bom, roof_features, typical_run_length
-from .checks import Check, lcrit_compulsory, run_checks, size_dc_cable, string_fuse
+from .checks import Check, lcrit_compulsory, run_checks, size_dc_cable, spd_plan, string_fuse
 from .layout import PANEL, Grid, grid_size_m, panel_count
 from .library import Inverter, Library, Panel
 from .strings import DesignOptions, SiteConditions, StringDesign, design_strings
@@ -40,7 +40,9 @@ class Project:
     designer: str = ""
     site_preset: str = ""
     site: SiteConditions = field(default_factory=SiteConditions)
-    thunder_days: float = 100.0
+    district: str = ""  # sets thunder_days from guideline Annex A
+    thunder_days: float = 110.0
+    installation_type: str = "building"  # "building", "residential" or "ground" (guideline 3.4.2)
     panel_key: str = ""
     inverters: list[InverterChoice] = field(default_factory=list)
     string_sizes: list[int] = field(default_factory=list)  # empty = automatic
@@ -181,11 +183,16 @@ def compute(project: Project, lib: Library, rules: BomRules) -> ProjectResult:
         "inverters": float(n_inv),
         "kwp": total_panels * panel.pmax_w / 1000 if panel else 0.0,
         "string_fuses": float(fuses),
-        "dc_spd_required": 1.0 if lcrit_compulsory(project.thunder_days, longest_route) else 0.0,
+        "dc_spd_required": 1.0 if lcrit_compulsory(project.thunder_days, longest_route, project.installation_type) else 0.0,
+        "dc_spd_inverter_end": 0.0, "dc_spd_array_end": 0.0, "dc_spd_array_boxes": 0.0,
         "dc_cable_4mm_m": 0.0, "dc_cable_6mm_m": 0.0, "dc_cable_10mm_m": 0.0,
     }
     for rr in roof_results:
         site[f"dc_cable_{rr.cable_mm2:g}mm_m"] += rr.cable_per_colour_m
+    if design:
+        plan = spd_plan(design, longest_route, project.thunder_days, project.installation_type)
+        site["dc_spd_inverter_end"], site["dc_spd_array_end"] = float(plan.inverter_end), float(plan.array_end)
+        site["dc_spd_array_boxes"] = float(plan.array_boxes)
     roofs_for_bom = [(rr.roof.name, rr.roof.roof_type, rr.features) for rr in roof_results]
     fmt = {"panel_model": f"{panel.pmax_w:g}W {panel.brand} {panel.model}" if panel else ""}
     bom = compute_bom(rules, roofs_for_bom, site, fmt)
@@ -199,7 +206,9 @@ def compute(project: Project, lib: Library, rules: BomRules) -> ProjectResult:
                                         "From the string design"))
 
     checks = run_checks(design, project.site, project.options, project.thunder_days, longest_route,
-                        project.max_dc_drop_pct) if design else []
+                        project.max_dc_drop_pct, project.installation_type) if design else []
+    if design:
+        checks.extend(_orientation_checks(design, roof_results))
     return ProjectResult(panel, design, error, roof_results, bom, checks, site)
 
 
@@ -208,3 +217,29 @@ def _inverter_counts(design: StringDesign) -> dict[str, int]:
     for a in design.inverters:
         counts[a.inverter.key] = counts.get(a.inverter.key, 0) + 1
     return counts
+
+
+def _orientation_checks(design: StringDesign, roofs: list[RoofResult]) -> list[Check]:
+    """Strings sharing an MPPT should face the same way (guideline Annex B, item 10)."""
+    roof_of: dict[str, set[str]] = {}
+    for rr in roofs:
+        for label in set(rr.string_map.values()):
+            roof_of.setdefault(label, set()).add(rr.roof.name)
+    split = sorted(label for label, names in roof_of.items() if len(names) > 1)
+    out = []
+    if split:
+        out.append(Check("Strings across roofs", "warn",
+                         "These strings run from one roof onto another. If the roofs face different directions, "
+                         "re-route them on site: " + ", ".join(split), "Guideline Annex B item 10"))
+    mixed = []
+    by_mppt: dict[tuple[int, int], set[str]] = {}
+    for row in design.schedule():
+        by_mppt.setdefault((row["inverter"], row["mppt"]), set()).update(roof_of.get(row["label"], set()))
+    for (inv, mppt), names in sorted(by_mppt.items()):
+        if len(names) > 1:
+            mixed.append(f"INV{inv:02d} MPPT {mppt} ({', '.join(sorted(names))})")
+    if mixed:
+        out.append(Check("Strings on one MPPT across roofs", "warn",
+                         "These MPPTs take strings from more than one roof. If the roofs face different directions, "
+                         "re-pair the strings on site: " + "; ".join(mixed), "Guideline Annex B item 10"))
+    return out

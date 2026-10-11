@@ -31,7 +31,7 @@ V4 = {
                       walkway_bases=0, lugs=0, plates=0, connectors=24, screws=174),
 }
 
-SITE = dict(panels=0, strings=0, inverters=1, kwp=0, string_fuses=0, dc_spd_required=0,
+SITE = dict(panels=0, strings=0, inverters=1, kwp=0, string_fuses=0, dc_spd_required=0, dc_spd_inverter_end=0, dc_spd_array_end=0, dc_spd_array_boxes=0,
             dc_cable_4mm_m=0, dc_cable_6mm_m=0, dc_cable_10mm_m=0)
 
 

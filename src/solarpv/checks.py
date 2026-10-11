@@ -41,15 +41,61 @@ def size_dc_cable(one_way_m: float, panel: Panel, string_size: int, site: SiteCo
     return DC_CABLE_SIZES[-1], dc_voltage_drop_pct(one_way_m, panel.imp_a, DC_CABLE_SIZES[-1], v)
 
 
-def lcrit_m(thunder_days: float) -> float:
-    """Critical DC cable length for buildings: Lcrit = 450 / Ng, Ng = 0.04 Td^1.25.
+# Guideline 3.4.2: Lcrit = factor / Ng, by type of installation.
+INSTALLATION_TYPES = {
+    "building": ("Service, industrial or agricultural building", 450),
+    "residential": ("Individual residential premises", 115),
+    "ground": ("Ground-mounted (terrestrial) plant", 200),
+}
+
+# Guideline Annex A (thunder-day map, 1961-1990). Each district takes the top of
+# the map band it mostly falls in, so the surge check errs on the safe side.
+THUNDER_DAYS_BY_DISTRICT = {
+    "Ampara": 85, "Anuradhapura": 85, "Badulla": 85, "Batticaloa": 85, "Colombo": 110, "Galle": 110,
+    "Gampaha": 110, "Hambantota": 110, "Jaffna": 35, "Kalutara": 110, "Kandy": 110, "Kegalle": 110,
+    "Kilinochchi": 50, "Kurunegala": 110, "Mannar": 60, "Matale": 110, "Matara": 85, "Moneragala": 110,
+    "Mullaitivu": 60, "Nuwara Eliya": 85, "Polonnaruwa": 85, "Puttalam": 110, "Ratnapura": 110,
+    "Trincomalee": 60, "Vavuniya": 60,
+}
+SPD_SECOND_DEVICE_M = 10.0  # guideline 3.4.2: over 10 m, a second SPD near the modules
+
+
+def lcrit_m(thunder_days: float, installation: str = "building") -> float:
+    """Critical DC cable length: Lcrit = factor / Ng, Ng = 0.04 Td^1.25.
 
     The guideline prints the exponent as 1.12; IEC 62305-2, which it cites,
     uses 1.25. 1.25 gives a higher Ng and a shorter Lcrit, so it is the safer
     choice of the two.
     """
     ng = 0.04 * thunder_days ** 1.25
-    return 450 / ng
+    return INSTALLATION_TYPES.get(installation, INSTALLATION_TYPES["building"])[1] / ng
+
+
+@dataclass
+class SpdPlan:
+    compulsory: bool
+    lcrit_m: float
+    inverter_end: int  # DC SPDs to buy for the inverter end (one per MPPT in use)
+    array_end: int  # DC SPDs to buy near the modules (one per MPPT in use)
+    array_boxes: int = 0  # enclosures near the modules (one per inverter)
+
+
+def spd_plan(design: StringDesign, route_m: float, thunder_days: float, installation: str = "building") -> SpdPlan:
+    """Where DC SPDs go (guideline 3.4.2). Inverters with a built-in Type II
+    arrester need none at the inverter end; routes over 10 m need a second set
+    in a box close to the modules. SPDs protect each MPPT input, + and -."""
+    lc = lcrit_m(thunder_days, installation)
+    if route_m < lc:
+        return SpdPlan(False, lc, 0, 0)
+    inverter_end = array_end = boxes = 0
+    for a in design.inverters:
+        used = sum(1 for m in a.mppts if m.strings)
+        if not a.inverter.dc_spd_builtin:
+            inverter_end += used
+        if route_m > SPD_SECOND_DEVICE_M and used:
+            array_end += used
+            boxes += 1
+    return SpdPlan(True, lc, inverter_end, array_end, boxes)
 
 
 def string_fuse(panel: Panel, parallel_strings: int) -> tuple[bool, int | None]:
@@ -64,7 +110,7 @@ def string_fuse(panel: Panel, parallel_strings: int) -> tuple[bool, int | None]:
 
 
 def run_checks(design: StringDesign, site: SiteConditions, options: DesignOptions, thunder_days: float,
-               dc_route_m: float, max_dc_drop_pct: float = 3.0) -> list[Check]:
+               dc_route_m: float, max_dc_drop_pct: float = 3.0, installation: str = "building") -> list[Check]:
     panel = design.panel
     checks: list[Check] = []
     longest = max(design.combination)
@@ -148,13 +194,28 @@ def run_checks(design: StringDesign, site: SiteConditions, options: DesignOption
                         f"(limit {max_dc_drop_pct}%)", GUIDE + " §2.3"))
 
     # Surge protection (guideline 3.4.2)
-    lc = lcrit_m(thunder_days)
-    compulsory = dc_route_m >= lc
-    checks.append(Check("DC surge protection", "warn" if compulsory else "pass",
-                        f"Cable length {dc_route_m:.0f} m vs Lcrit {lc:.0f} m (Td = {thunder_days:g} thunder days): "
-                        + ("Type 2 DC SPD compulsory" if compulsory else "DC SPD not compulsory")
-                        + f". SPD Ucpv ≥ 1.25 × Voc(STC) × M = {1.25 * panel.voc_v * longest:.0f} V.",
-                        GUIDE + " §3.4.2"))
+    plan = spd_plan(design, dc_route_m, thunder_days, installation)
+    kind = INSTALLATION_TYPES.get(installation, INSTALLATION_TYPES["building"])[0].lower()
+    basis = (f"Cable length {dc_route_m:.0f} m vs Lcrit {plan.lcrit_m:.0f} m for a {kind} "
+             f"(Td = {thunder_days:g} thunder days)")
+    rating = (f"Rate each SPD Ucpv ≥ 1.25 × Voc(STC) × M = {1.25 * panel.voc_v * longest:.0f} V, Up ≤ 1.5 kV, "
+              "In ≥ 40 kA, on both + and −.")
+    if not plan.compulsory:
+        checks.append(Check("DC surge protection", "pass", basis + ": DC SPD not compulsory.", GUIDE + " §3.4.2"))
+    else:
+        builtin = all(a.inverter.dc_spd_builtin for a in design.inverters)
+        where = []
+        if plan.inverter_end:
+            where.append(f"{plan.inverter_end} at the inverter end (no built-in DC SPD)")
+        elif builtin:
+            where.append("inverter end covered by the inverters' built-in Type II DC SPD")
+        if plan.array_end:
+            where.append(f"{plan.array_end} near the modules in {plan.array_boxes} box(es), as the route is over "
+                         f"{SPD_SECOND_DEVICE_M:g} m")
+        checks.append(Check("DC surge protection", "info",
+                            basis + ": Type 2 DC SPD compulsory. " + _sentence("; ".join(where))
+                            + (rating if plan.inverter_end or plan.array_end else ""),
+                            GUIDE + " §3.4.2"))
     checks.append(Check("Earthing", "info",
                         "Bond every module frame and rail to one continuous earth conductor per row; bare copper not less than 6 mm²",
                         GUIDE + " §3.4.1"))
@@ -164,6 +225,10 @@ def run_checks(design: StringDesign, site: SiteConditions, options: DesignOption
     return checks
 
 
-def lcrit_compulsory(thunder_days: float, route_m: float) -> bool:
-    return route_m >= lcrit_m(thunder_days)
+def _sentence(text: str) -> str:
+    return (text[:1].upper() + text[1:] + ". ") if text else ""
+
+
+def lcrit_compulsory(thunder_days: float, route_m: float, installation: str = "building") -> bool:
+    return route_m >= lcrit_m(thunder_days, installation)
 

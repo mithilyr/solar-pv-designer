@@ -9,7 +9,9 @@
   "max_ambient_c": 38,
   "cell_rise_c": 30.0
  },
- "thunder_days": 100.0,
+ "district": "Anuradhapura",
+ "thunder_days": 85,
+ "installation_type": "building",
  "panel_key": "JA Solar JAM72D40-595/LB",
  "inverters": [
   {

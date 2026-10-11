@@ -2,6 +2,7 @@ from openpyxl import load_workbook
 
 from solarpv.export_excel import export_report
 from solarpv.project import InverterChoice, Project, Roof, compute
+from solarpv.strings import DesignOptions
 
 GRID = [[1] * 12 for _ in range(12)] + [[0] * 12] + [[1] * 12 for _ in range(12)]
 
@@ -66,3 +67,14 @@ def test_excel_bom_leaves_out_zero_lines(tmp_path, library, rules):
     export_report(project, result, tmp_path / "r.xlsx")
     ws = load_workbook(tmp_path / "r.xlsx")["BOM"]
     assert all(row[4] != 0 for row in ws.iter_rows(min_row=5, values_only=True) if row[1])
+
+
+def test_mppt_shared_by_two_roofs_is_flagged(library, rules):
+    # 4 strings of 8 on two MPPTs; the second string runs from the east roof onto the west one.
+    project = Project(name="Two roofs", panel_key="JA Solar JAM72D40-595/LB",
+                      inverters=[InverterChoice("SolaX X3-MIC-12K-G2", 1)], string_sizes=[8],
+                      options=DesignOptions(-100, 100),
+                      roofs=[Roof("East", [[1] * 6, [1] * 6]), Roof("West", [[1] * 10, [1] * 10])])
+    result = compute(project, library, rules)
+    flagged = [c for c in result.checks if c.title == "Strings on one MPPT across roofs"]
+    assert flagged and "East, West" in flagged[0].detail

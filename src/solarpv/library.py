@@ -65,6 +65,7 @@ class Inverter:
     ac_voltage_v: float = 400.0  # line-to-line (230 for single phase)
     max_pv_kwp: float | None = None
     start_voltage: float | None = None
+    dc_spd_builtin: bool = False  # Type II DC surge arrester inside the inverter (datasheet)
     source: str = ""
 
     @property
