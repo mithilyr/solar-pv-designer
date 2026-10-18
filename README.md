@@ -8,9 +8,20 @@ A free Windows desktop app for rooftop solar engineers. Give it the roof layout 
 
 Everything exports to one Excel workbook: BOM, inverter summary, string schedule, checks and a colour-coded string layout for each roof.
 
+![String design for an 841-panel factory roof: inverter loading, string schedule and the suggested routing](docs/screenshots/strings.png)
+
+| Roof layout | Design checks | Bill of materials |
+|---|---|---|
+| ![Roof grid fitted from Google Earth measurements](docs/screenshots/roofs.png) | ![Checks against the PUCSL guideline](docs/screenshots/checks.png) | ![Bill of materials](docs/screenshots/bom.png) |
+
 ## Install
 
-Download `SolarPVDesigner-Setup-x.y.z.exe` from the [Releases](../../releases) page and run it. It installs for your Windows user only, so it needs no administrator rights, and adds a Start menu shortcut. Double-clicking a `.spvd` project file opens it in the app.
+1. Download **[SolarPVDesigner-Setup.exe](https://github.com/mithilyr/solar-pv-designer/releases/latest)** from the latest release. You don't need a GitHub account.
+2. Run it. It installs for your Windows user only, so it needs no administrator rights, and it adds a Start menu shortcut. Double-clicking a `.spvd` project file opens it in the app.
+
+The installer is not code-signed yet, so Windows SmartScreen may say "Windows protected your PC". Click **More info**, then **Run anyway**.
+
+To try it straight away, open one of the made-up sites in [`examples/projects`](examples) with **File > Open**.
 
 ## How to use it
 
