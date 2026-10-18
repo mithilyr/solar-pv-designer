@@ -1,5 +1,7 @@
 # Solar PV Designer
 
+![Solar PV Designer: rooftop solar BOQ and string design in seconds](docs/screenshots/banner.png)
+
 A free Windows desktop app for rooftop solar engineers. Give it the roof layout and the inverters you have, and it works out:
 
 - **the bill of materials**: rails, clamps, roof bases, walkway plates, earthing, DC cable, connectors and protection, per roof type;
@@ -31,8 +33,12 @@ To try it straight away, open one of the made-up sites in [`examples/projects`](
    - **Import AutoCAD DXF**: in AutoCAD, `SAVEAS` the layout as DXF. Panels drawn as copies of one block, or as closed rectangles, become the grid.
    - **Import CSV / Excel**: a grid with `1` for a panel, `0` for empty space or walkway, and `2` for a special cell. Each column is one rail run.
 
+   ![Fitting panels to a 32 × 48 m roof measured in Google Earth, with run breaks and walkways](docs/screenshots/google-earth.png)
+
    Click cells to fix the layout by hand. Choose the roof type for each roof: trapezoidal sheet, standing seam/Kalzip, Amano/corrugated, concrete flat or clay tile.
 3. **Panels & Inverters**: pick the panel and add inverters, or press *Suggest inverters* to list models and quantities that fit the overload window. String lengths are chosen automatically and follow the rail runs where possible. You can also fix them yourself, for example `12, 13`.
+
+   ![Inverter suggestions ranked by DC/AC overload](docs/screenshots/suggest.png)
 4. **Strings**: review the inverter loading, the MPPT layout and the string schedule. The roof view shows a suggested routing that follows the rail runs.
 5. **BOM**: yellow lines are entered by hand, so double-click the quantity to type one. Use **Export Excel report** to write the workbook.
 6. **Checks**: shows each check as passed, warning or failed, with the guideline clause it comes from.
@@ -41,6 +47,8 @@ To try it straight away, open one of the made-up sites in [`examples/projects`](
 
 - **Library**: panels and inverters with their datasheet values. Add your company's models, correct a value, or use Import/Export to share one library across the office. Your edits are saved for your Windows user (in `%APPDATA%\SolarPVDesigner`) and are kept when the app is updated.
 - **BOM Rules**: every quantity is a formula, such as `2 * (panels - runs)` for mid clamps. Change the formulas, add your company's item codes, or add new items. The help panel lists the names you can use, and **Check and save rules** catches mistakes before saving.
+
+![BOM Rules tab: each quantity is an editable formula](docs/screenshots/bom-rules.png)
 
 ## What the checks cover
 
